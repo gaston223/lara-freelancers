@@ -1,7 +1,7 @@
 <header class="flex justify-between items-center py-5">
     <a href="#">Lara Freelancers</a>
     <nav>
-        <a href="#" class="mr-5 hover:text-green-500">Nos missions</a>
+        <a href="{{ route('jobs.index') }}" class="mr-5 hover:text-green-500">Nos missions</a>
         @guest
             <a href="{{ route('login') }}" class="mr-5 hover:text-green-500">Se connecter</a>
             <a href="{{ route('register') }}" class="mr-5 hover:text-green-500">S'enregistrer</a>
