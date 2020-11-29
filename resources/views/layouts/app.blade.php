@@ -5,8 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <title>Lara-freelancers</title>
+       <script src="https://kit.fontawesome.com/3a35c19d1d.js" crossorigin="anonymous"></script>
 
+       {{-- CDN Alpine js --}}
+       {{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> --}}
+    <title>Lara-freelancers</title>
+    @livewireStyles
 </head>
 
 <body>
@@ -15,7 +19,8 @@
         @yield('content')
 
     </div>
-
+    @livewireScripts
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 
 </html>

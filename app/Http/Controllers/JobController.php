@@ -18,4 +18,16 @@ class JobController extends Controller
             'jobs' => $jobs
         ]);
     }
+
+    /**
+     * @param Job $id
+     * 
+     * @return $id
+     */
+    public function show(Job $id)
+    {
+        return view('jobs.show' ,[
+            'job' => $id
+        ]) ; 
+    }
 }
