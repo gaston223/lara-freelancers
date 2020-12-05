@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Job extends Model
 {
@@ -27,4 +28,18 @@ class Job extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+
+    public function likes()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function isLiked()
+    {
+        if(auth()->check()){
+            return auth()->user()->likes->contains('id', $this->id);
+        }
+    }
+
 }

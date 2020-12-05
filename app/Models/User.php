@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Job;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -56,6 +56,11 @@ class User extends Authenticatable
      */
     public function jobs()
     {
-        return $this->hasMany('App\Models\Job');
+        return $this->hasMany(Job::class);
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Job::class);
     }
 }
