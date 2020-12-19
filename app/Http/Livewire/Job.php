@@ -6,19 +6,23 @@ use Livewire\Component;
 
 class Job extends Component
 {
-    public $job;
 
+    public $job;
     public function addLike()
     {
         if(auth()->check()){
             auth()->user()->likes()->toggle($this->job->id);
+        }else{
+            $this->emit('flash', 'Merci de vous connecter pour ajouter une mission à vos favoris', 'error');
         }
         //Todo error message
-        
+
     }
 
     public function render()
     {
         return view('livewire.job');
     }
+
+
 }

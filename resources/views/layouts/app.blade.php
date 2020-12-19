@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
        <script src="https://kit.fontawesome.com/3a35c19d1d.js" crossorigin="anonymous"></script>
-
+    <style>
+        [x-cloak] { display: none; }
+    </style>
        {{-- CDN Alpine js --}}
        {{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> --}}
     <title>Lara-freelancers</title>
@@ -16,6 +18,7 @@
 <body>
     <div class="container mx-auto px-4">
         @include('partials.navbar')
+        <livewire:flash />
         @yield('content')
 
     </div>
