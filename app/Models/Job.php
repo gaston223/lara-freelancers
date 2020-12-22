@@ -13,7 +13,7 @@ class Job extends Model
 
     /**
      * @param mixed $query
-     * 
+     *
      * @return $query
      */
     public function scopeOnline($query)
@@ -40,6 +40,14 @@ class Job extends Model
         if(auth()->check()){
             return auth()->user()->likes->contains('id', $this->id);
         }
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function proposals()
+    {
+        return $this->hasMany('App\Models\Proposal');
     }
 
 }

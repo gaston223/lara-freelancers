@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Job;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -43,24 +42,35 @@ class User extends Authenticatable
     ];
 
     /**
-     * @return role
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function role()
     {
         return $this->belongsTo('App\Models\Role');
     }
 
-   
+
     /**
-     * @return jobs
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function jobs()
     {
         return $this->hasMany(Job::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function likes()
     {
         return $this->belongsToMany(Job::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function proposals()
+    {
+        return $this->hasMany('App\Models\Proposal');
     }
 }
