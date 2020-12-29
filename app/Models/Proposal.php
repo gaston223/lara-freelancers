@@ -9,7 +9,7 @@ class Proposal extends Model
 {
     use HasFactory;
 
-    protected $fillable=['job_id', 'validated'];
+    protected $fillable=['job_id', 'validated', 'user_id'];
 
     public static function boot()
     {

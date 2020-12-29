@@ -55,7 +55,7 @@ class User extends Authenticatable
      */
     public function jobs()
     {
-        return $this->hasMany(Job::class);
+        return $this->hasMany('App\Models\Job');
     }
 
     /**
@@ -63,7 +63,7 @@ class User extends Authenticatable
      */
     public function likes()
     {
-        return $this->belongsToMany(Job::class);
+        return $this->belongsToMany('App\Models\Job');
     }
 
     /**
@@ -72,5 +72,25 @@ class User extends Authenticatable
     public function proposals()
     {
         return $this->hasMany('App\Models\Proposal');
+    }
+
+    /**
+     * Get Conversation from the request with user id
+     * @return Conversation
+     */
+    public function conversations()
+    {
+        return Conversation::where(function ($q) {
+            $q->where('to', $this->id)
+                ->orWhere('from', $this->id);
+        });
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConversationsAttribute()
+    {
+        return $this->conversations()->get();
     }
 }

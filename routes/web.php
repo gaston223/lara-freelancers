@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProposalController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,9 @@ Route::get('/jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', function(){return view('home');})->name('home');
+    Route::get('/conversations', [ConversationController::class, 'index'])->name('conversations.index');
+    Route::get('/conversation/{conversation}', [ConversationController::class, 'show'])->name('conversation.show');
+    Route::get('/confirmProposal/{proposal}', [ProposalController::class, 'confirm'])->name('confirm.proposal');
 });
 
 Route::group(['middleware' => ['auth' , 'proposal']], function () {

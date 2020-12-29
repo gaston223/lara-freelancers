@@ -22,7 +22,7 @@ class Job extends Model
     }
 
     /**
-     * @return user
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
