@@ -38,9 +38,12 @@ class ProposalController extends Controller
 
     public function confirm(Request $request)
     {
-
         $proposal = Proposal::findOrFail($request->proposal);
-        //dd($proposal);
+
+        if($proposal->job->user->id !== auth()->user()->id){
+            abort(403 ,'Vous n\'êtes pas autorisé a efectuer cette action');
+        }
+
         $proposal->fill(['validated' => 1]);
         if($proposal->isDirty()){
             $proposal->save();

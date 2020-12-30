@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class JobController extends Controller
 {
     /**
-     * @return view
+     * @return view|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -21,13 +21,13 @@ class JobController extends Controller
 
     /**
      * @param Job $id
-     * 
+     *
      * @return $id
      */
     public function show(Job $id)
     {
         return view('jobs.show' ,[
             'job' => $id
-        ]) ; 
+        ]) ;
     }
 }
