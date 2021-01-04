@@ -19,7 +19,7 @@ class ProposalController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('home')
+            return back()
                 ->withErrors($validator)
                 ->withInput();
         }

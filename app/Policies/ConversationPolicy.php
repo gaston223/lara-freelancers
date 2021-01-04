@@ -31,6 +31,7 @@ class ConversationPolicy
     public function view(User $user, Conversation $conversation)
     {
         if($user->id === $conversation->job->user_id){
+            return $user->id === $conversation->job->user_id;
         }else{
             return $user->proposals->contains(function ($value, $key) use($conversation, $user) {
                 return $value['validated'] === 1
